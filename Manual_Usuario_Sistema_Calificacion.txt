@@ -74,3 +74,4 @@ GET /api/clasificacion/top
 - JWT protege los endpoints
 - El cálculo de promedios es automático según las calificaciones
 ------------------------------------------------------------
+link de GitHub: https://github.com/OliverLantigua9/SistemadeCalifiacion/tree/main
