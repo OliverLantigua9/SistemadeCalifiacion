@@ -1,0 +1,76 @@
+UNIVERSIDAD UFHEC
+Asignatura: INF-4318 - Ingeniería de Servicios Web
+
+MANUAL DE USUARIO
+Sistema de Clasificación de Estudiantes
+
+Autor: Oliver Lantigua
+Matrícula: SD-19-30423
+Versión: 1.0
+
+------------------------------------------------------------
+1. INTRODUCCIÓN
+Este documento describe el uso y funcionamiento de la API REST para la clasificación de estudiantes, desarrollada en ASP.NET Core 8.0 con conexión a SQL Server y autenticación JWT. Permite gestionar estudiantes, materias y calificaciones, así como calcular promedios y clasificar a los estudiantes.
+
+2. REQUISITOS PREVIOS
+- Visual Studio 2022 con .NET 8.0
+- SQL Server (local o remoto)
+- SQL Server Management Studio (SSMS)
+- Postman o cliente HTTP (opcional)
+
+3. INSTALACIÓN Y CONFIGURACIÓN
+3.1 Crear la Base de Datos:
+Ejecutar en SQL Server:
+CREATE DATABASE SistemaCalificacionDB;
+USE SistemaCalificacionDB;
+CREATE TABLE Usuario (...);
+CREATE TABLE Estudiante (...);
+CREATE TABLE Materia (...);
+CREATE TABLE Calificacion (...);
+
+3.2 Configurar la Cadena de Conexión:
+En appsettings.json:
+"ConnectionStrings": {
+    "DefaultConnection": "Server=TU_SERVIDOR;Database=SistemaCalificacionDB;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+
+3.3 Restaurar paquetes NuGet:
+Install-Package Microsoft.EntityFrameworkCore
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.Tools
+Install-Package Swashbuckle.AspNetCore
+
+4. EJECUCIÓN DEL PROYECTO
+Abrir en Visual Studio, ejecutar con IIS Express y acceder a https://localhost:PUERTO/swagger
+
+5. ENDPOINTS DISPONIBLES
+Autenticación:
+POST /api/usuario/login
+POST /api/usuario/registro
+
+Estudiantes:
+GET /api/estudiante
+POST /api/estudiante
+
+Materias:
+GET /api/materia
+POST /api/materia
+
+Calificaciones:
+GET /api/calificacion
+POST /api/calificacion
+
+Clasificación:
+GET /api/clasificacion/promedios
+GET /api/clasificacion/top
+
+6. PRUEBAS EN SWAGGER
+1. Ingresar a Swagger
+2. Autenticarse con /api/usuario/login
+3. Colocar token en Authorize
+4. Probar endpoints
+
+7. NOTAS
+- JWT protege los endpoints
+- El cálculo de promedios es automático según las calificaciones
+------------------------------------------------------------
